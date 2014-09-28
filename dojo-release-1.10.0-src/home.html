@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dojo : Study</title>
+</head>
+<body>
+	<!-- load DOJO -->
+	<script>
+		//dojoConfig = {};
+		//var djConfig = {isDebug: true, debugHeight:100 };
+
+		dojoConfig = {
+			has:{
+				"dojo-firebug": true,
+				"dojo-debug-messages": true
+			},
+			baseUrl: "dojo",
+			parseOnLoad: false,
+			async: true
+		};
+	</script>
+	<script src='dojo/dojo.js'></script>
+	<script>
+		require(['dojo/parser', 
+			'dojo/domReady!'],
+			function(parser,firebug){
+				parser.parse();
+				console.log('Hello World!');
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+   	<meta name="apple-mobile-web-app-capable" content="yes"/><!-- runs the app in FullScreen mode -->
+   	<!-- Disable Caching -->
+   	<!-- prevent cache -->
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+
+	<title>Dojo mobile</title>
+
+	<!-- Forcing to render a particular theme -->
+	<!-- Android 1,2 -->
+	<!-- <link rel="stylesheet" type="text/css" href="dojo-release-1.10.0-src/dojox/mobile/themes/android/android.css"></link> -->
+	<!-- Android 3,4 -->
+	<link rel="stylesheet" type="text/css" href="dojo-release-1.10.0-src/dojox/mobile/themes/holodark/holodark.css"></link>
+	<!-- Custom theme <link rel="stylesheet" type="text/css" href="dojox/mobile/themes/custom/custom.css"></link> -->
+
+	<script type="text/javascript" src="dojo-release-1.10.0-src/dojox/mobile/deviceTheme.js"></script>
+	<script type="text/javascript" src="dojo-release-1.10.0-src/dojo/dojo.js"></script>
+	<!-- DOJO Config -->
+	<script type="text/javascript">
+	    dojoConfig = {
+	    	has: {
+	            "dojo-firebug": true,
+	            "dojo-debug-messages": true,
+	            "dojo-guarantee-console": false,
+	            "popup": true
+	        },
+	        async: true,
+	        parseOnLoad: false,
+	        baseUrl: "./dojo-release-1.10.0-src/",
+	        mblHideAddressBar: true,
+	        cacheBust: true,
+	        customP : "Hello World"
+	    };
+	</script>
+	<script type="text/javascript">
+	require([
+	    "dojox/mobile/parser",
+
+	    "dojox/mobile/View",
+	    "dojox/mobile/Heading",
+	    "dojox/mobile/RoundRectList",
+	    "dojox/mobile/ListItem",
+	    "dojox/mobile/Switch",
+
+	    "dojox/mobile/compat",
+	    "dojo/domReady!"
+	], function (parser) {
+	    // now parse the page for widgets
+	    parser.parse();
+	    console.log(dojo.config);
+	});
+	</script>
+</head>
+<body style="visibility:hidden;">
+	<!-- the view or "page"; select it as the "home" screen -->
+	<div id="settings" data-dojo-type="dojox/mobile/View" data-dojo-props="selected:true">
+		<!-- a sample heading -->
+		<h1 data-dojo-type="dojox/mobile/Heading">Home</h1>
+		<!-- a rounded rectangle list container -->
+		<ul data-dojo-type="dojox/mobile/RoundRectList">
+		    <!-- list item with an icon containing a switch -->
+		    <li data-dojo-type="dojox/mobile/ListItem" >Airplane Mode
+		        <!-- the switch -->
+		        <div data-dojo-type="dojox/mobile/Switch" ></div>
+		    </li>
+		    <!-- list item with an icon that slides this view away and then loads another page -->
+		    <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="rightText:'mac'">Wi-Fi</li>
+		    <!-- list item with an icon that slides to a view called "general" -->
+		    <li data-dojo-type="dojox/mobile/ListItem" data-dojo-props="rightText:'AcmePhone', moveTo:'bar',label:'Hello'">Carrier</li>
+		</ul>
+	</div>
+
+	<div id="bar" data-dojo-type="dojox/mobile/View">
+       	<h1 data-dojo-type="dojox/mobile/Heading" data-dojo-props="back:'Home',moveTo:'settings'">View 2</h1>
+       	<ul data-dojo-type="dojox/mobile/RoundRectList">
+         	<li data-dojo-type="dojox/mobile/ListItem" data-dojo-pros="label:'World',icon:'dojox/mobile/tests/images/i-icon-2.png'"></li>
+       	</ul>
+    </div>
+</body>
+</html>

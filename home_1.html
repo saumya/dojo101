@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+   	<meta name="apple-mobile-web-app-capable" content="yes"/><!-- runs the app in FullScreen mode -->
+   	<!-- Disable Caching -->
+   	<!-- prevent cache -->
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+
+	<title>Dojo : dekstop</title>
+
+	<script type="text/javascript" src="dojo-release-1.10.0-src/dojo/dojo.js"></script>
+	<!-- DOJO Config -->
+	<script type="text/javascript">
+	    dojoConfig = {
+	    	has: {
+	            "dojo-firebug": true,
+	            "dojo-debug-messages": true,
+	            "dojo-guarantee-console": false,
+	            "popup": true
+	        },
+	        async: true,
+	        parseOnLoad: false,
+	        baseUrl: "./dojo-release-1.10.0-src/",
+	        cacheBust: true,
+	        customP : "Hello World"
+	    };
+	</script>
+	<script type="text/javascript">
+	require([
+	    "dojox/mobile/parser",
+	    'dojo/dom',
+	    'dojo/dom-construct',
+
+	    'myWidgets/rayWidget',
+	    'myWidgets/rayWidget2',
+	    'myWidgets/rayWidget3',
+
+	    "dojox/mobile/View",
+	    "dojox/mobile/Heading",
+	    "dojox/mobile/RoundRectList",
+	    "dojox/mobile/ListItem",
+	    "dojox/mobile/Switch",
+
+	    "dojox/mobile/compat",
+	    "dojo/domReady!"
+	], function (parser,dom, domConstruct,RayWidget,RayWidget2,RayWidget3) {
+	    // now parse the page for widgets
+	    parser.parse();
+	    //console.log(dojo.config);
+	    var greetingNode = dom.byId('greeting');
+        domConstruct.place('<i> Dojo!</i>', greetingNode);
+        //
+        var rw = new RayWidget();
+        rw.startup();
+        //
+        //var rw2 = new RayWidget2();
+        //rw2.startup();
+	});
+	</script>
+</head>
+<body>
+	<h1 id="greeting">Hello</h1>
+	<span data-dojo-type="myWidget.RayWidget2">hi</span>
+	<span data-dojo-type="myWidget.RayWidget3">RayWidget3 : If you see this, your template is not rendered! Fix this.</span>
+</body>
+</html>
